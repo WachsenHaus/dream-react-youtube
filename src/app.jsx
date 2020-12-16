@@ -1,9 +1,7 @@
-import './App.css';
-import React from 'react';  
-import habit from '../../habit-tracker/src/components/habit';
-
+import Navbar from "./components/navbar";
+import "./app.css";
 function App() {
-  return;
+  return <Navbar />;
 }
 
 export default App;
