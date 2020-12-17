@@ -1,7 +1,6 @@
 .navbar {
-  background-color: yellow;
-  width: 80vw;
+  background-color: red;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
 }
