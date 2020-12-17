@@ -1,26 +1,27 @@
-import "./app.css";
+import styles from "./app.module.css";
 import React, { useEffect, useState } from "react";
-import Navbar from "./components/navbar";
-import { api } from "./components/api";
-import VideoItem from "./components/video_item/video_item";
 import VideoList from "./components/video_list/video_list";
+import SearchHeader from "./components/search_header/search_header";
 
-const App = (props) => {
+const App = ({ youtube }) => {
   const [videos, setVideos] = useState(0);
+  const search = (query) => {
+    youtube
+      .search(query) //
+      .then((videos) => setVideos(videos));
+  };
 
   useEffect(() => {
-    async function fetchData() {
-      const videos = await api.fetch_most_popular;
-      setVideos(videos);
-    }
-    fetchData();
+    youtube
+      .mostPopular() //
+      .then((videos) => setVideos(videos));
   }, []);
 
   return (
-    <>
-      <Navbar />
+    <div className={styles.app}>
+      <SearchHeader onSearch={search} />
       {Array.isArray(videos) && <VideoList videos={videos} />}
-    </>
+    </div>
   );
 };
 
